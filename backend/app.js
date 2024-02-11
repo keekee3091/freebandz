@@ -10,6 +10,7 @@ require('./models/connections');
 var taxesRouter = require('./routes/taxes');
 var usersRouter = require('./routes/users');
 var incomesRouter = require('./routes/incomes');
+var clientsRouter = require('./routes/clients')
 
 var app = express();
 const cors = require('cors');
@@ -23,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/taxes', taxesRouter);
 app.use('/users', usersRouter);
 app.use('/incomes', incomesRouter)
+app.use('/clients', clientsRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

@@ -6,13 +6,30 @@ const Tax = require('../models/taxes')
 //Tax record creation
 router.post('/', async (req, res) => {
   try {
-    const { taxesUser, taxesYear, taxesRate, taxesDeduction } = req.body
+    const {
+      client,
+      invoiceNumber,
+      issueDate,
+      dueDate,
+      items,
+      subtotal,
+      tax,
+      total,
+      status,
+      notes
+    } = req.body
 
     const newTax = new Tax({
-      taxesUser,
-      taxesYear,
-      taxesRate,
-      taxesDeduction
+      client,
+      invoiceNumber,
+      issueDate,
+      dueDate,
+      items,
+      subtotal,
+      tax,
+      total,
+      status,
+      notes
     });
     const savedTax = await newTax.save();
 

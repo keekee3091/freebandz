@@ -8,7 +8,7 @@ const bcrypt = require('bcrypt')
 //User Sign Up
 router.post('/signup', async (req, res) => {
   try {
-    const { username, email } = req.body
+    const { username, email, password, freelancer_details } = req.body
 
     const existingUser = await User.findOne({ email });
     if (existingUser) {
@@ -20,6 +20,7 @@ router.post('/signup', async (req, res) => {
       username,
       email,
       password: hash,
+      freelancer_details,
       token: uid2(32)
     })
     const savedUser = await newUser.save();
@@ -33,16 +34,20 @@ router.post('/signup', async (req, res) => {
 //User Sign In
 router.post('/signin', async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { username, email, password } = req.body;
 
-    const user = await User.findOne({ email });
+    const query = { $or: [{ email }, { username }] }
+    const user = await User.findOne(query);
+
     if (!user) {
       return res.status(404).json({ message: 'User not found' })
     }
 
-    if (user.password !== password) {
+    if (!bcrypt.compareSync(password, user.password)) {
       return res.status(401).json({ message: 'Invalid password' });
     }
+
+
 
     res.json(user);
   } catch (error) {

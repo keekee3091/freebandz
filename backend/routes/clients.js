@@ -6,9 +6,8 @@ const Client = require('../models/clients');
 // Create a new client
 router.post('/', async (req, res) => {
     try {
-        const { clientUser, clientName, clientContract, clientProject } = req.body;
+        const { clientName, clientContract, clientProject } = req.body;
         const newClient = new Client({
-            clientUser,
             clientName,
             clientContract,
             clientProject

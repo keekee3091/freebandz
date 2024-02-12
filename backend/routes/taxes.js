@@ -7,6 +7,7 @@ const Tax = require('../models/taxes')
 router.post('/', async (req, res) => {
   try {
     const {
+      client,
       invoiceNumber,
       issueDate,
       dueDate,
@@ -19,6 +20,7 @@ router.post('/', async (req, res) => {
     } = req.body
 
     const newTax = new Tax({
+      client,
       invoiceNumber,
       issueDate,
       dueDate,

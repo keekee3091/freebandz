@@ -5,9 +5,10 @@ const Expense = require('../models/expenses')
 
 router.post('/', async (req, res) => {
     try {
-        const { expenseAmount, expenseCategory, expenseDate, expenseDescription } = req.body
+        const { expenseUser, expenseAmount, expenseCategory, expenseDate, expenseDescription } = req.body
 
         const newExpense = new Expense({
+            expenseUser,
             expenseAmount,
             expenseCategory,
             expenseDate,

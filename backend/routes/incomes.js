@@ -1,14 +1,15 @@
 var express = require('express');
 var router = express.Router();
 
-const Income = require('../models/taxes')
+const Income = require('../models/incomes')
 
 //Income record creation
 router.post('/', async (req, res) => {
     try {
-        const { incomeAmount, incomeSource, incomeDate, incomeDescription } = req.body
+        const { incomeUser, incomeAmount, incomeSource, incomeDate, incomeDescription } = req.body
 
         const newIncome = new Income({
+            incomeUser,
             incomeAmount,
             incomeSource,
             incomeDate,
@@ -16,7 +17,7 @@ router.post('/', async (req, res) => {
         })
         const savedIncome = await newIncome.save()
 
-        res.json(201).json(savedIncome)
+        res.status(201).json(savedIncome)
     } catch (error) {
         res.status(400).json({ message: error.message })
     }

@@ -10,7 +10,7 @@ import { useState } from 'react';
 function Header() {
 
     const [popoverContentOpen, setPopoverContentOpen] = useState(false)
-    const user = useSelector(state => state.user.value)
+    const user = useSelector(state => state.user)
     const dispatch = useDispatch()
     const router = useRouter()
     const isLogged = user.token != null

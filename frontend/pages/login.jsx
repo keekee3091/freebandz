@@ -3,9 +3,6 @@ import { useDispatch, useSelector, } from 'react-redux';
 import Modal from 'react-modal'
 import { useRouter } from 'next/router'
 import { loginUser } from '../reducers/user';
-import './styles/tailwind.css';
-import Home from '../components/Home';
-
 
 function login() {
     const [modalIsOpen, setModalIsOpen] = useState(false)
@@ -95,8 +92,6 @@ function login() {
                     <h2 className={styles.subTitle}>I'm butta cuuuuuum</h2>
 
                     <button className={styles.button} onClick={() => { setIsSignIn(true); openModal() }}>Login</button>
-
-                    <Home />
 
                 </div>
 

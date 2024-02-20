@@ -1,5 +1,6 @@
 import React from 'react';
-import styles from '../styles/Home.module.css'; // Import your CSS module
+import Link from 'next/link'
+import styles from '../styles/Home.module.css';
 
 function Banner() {
   return (
@@ -7,7 +8,7 @@ function Banner() {
       <h1 className={styles.title}>Welcome to Your Micro SaaS Finance Manager</h1>
       <p className={styles.description}>Track your finances easily with our intuitive platform.</p>
       <div className={styles.ctaButtons}>
-        <button className={styles.primaryButton}>Sign Up</button>
+        <Link className={styles.primaryButton} href='/login'>Sign Up</Link>
         <button className={styles.secondaryButton}>Learn More</button>
       </div>
     </div>

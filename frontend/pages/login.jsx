@@ -3,6 +3,9 @@ import { useDispatch, useSelector, } from 'react-redux';
 import Modal from 'react-modal'
 import { useRouter } from 'next/router'
 import { loginUser } from '../reducers/user';
+import SignIn from '../components/Signin';
+import SignUp from '../components/Signup';
+import styles from '../styles/Login.module.css';
 
 function login() {
     const [modalIsOpen, setModalIsOpen] = useState(false)
@@ -94,6 +97,11 @@ function login() {
                     <button className={styles.button} onClick={() => { setIsSignIn(true); openModal() }}>Login</button>
 
                 </div>
+                {isSignIn ? (
+                    <SignIn isOpen={modalIsOpen} closeModal={closeModal} handleSignIn={handleLogin} />
+                ) : (
+                    <SignUp isOpen={modalIsOpen} closeModal={closeModal} handleSignUp={handleRegister} />
+                )}
 
 
             </div>

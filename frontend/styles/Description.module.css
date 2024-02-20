@@ -1,0 +1,25 @@
+.descriptionContainer {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+}
+
+.sectionTitle {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.descriptionText {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.featureList {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.featureList li {
+    margin-bottom: 0.5rem;
+}

@@ -1,16 +1,36 @@
 import React from 'react';
 import styles from '../styles/Header.module.css';
+import Link from 'next/link'
 import { useSelector, useDispatch } from 'react-redux'
 import { logoutUser } from '../reducers/user';
+import { Popover } from 'react-tiny-popover';
+import Router, { useRouter } from 'next/router'
+import { useState } from 'react';
 
 function Header() {
 
+    const [popoverContentOpen, setPopoverContentOpen] = useState(false)
     const user = useSelector(state => state.user.value)
+    const dispatch = useDispatch()
+    const router = useRouter()
     const isLogged = user.token != null
 
+
     const logout = () => {
-        useDispatch(l)
+        dispatch(logoutUser());
+        router.push('/')
     }
+
+    const popoverContent = (
+        <div className={styles.popoverContainer}>
+            <div className={styles.popoverLink}>
+                <Link href='/personnal'>Your profile</Link>
+            </div>
+            <div className={styles.popoverDisconnect}>
+                <div onClick={() => { logout(); setPopoverContentOpen(false) }}>Disconnect</div>
+            </div>
+        </div>
+    )
 
     return (
         <header className={styles.header}>
@@ -20,17 +40,28 @@ function Header() {
             </div>
             <nav className={styles.nav}>
                 <ul className={styles.navList}>
-                    <li className={styles.navItem}><a href="/">Home</a></li>
-                    <li className={styles.navItem}><a href="/about">About</a></li>
-                    <li className={styles.navItem}><a href="/services">Services</a></li>
-                    <li className={styles.navItem}><a href="/contact">Contact</a></li>
+                    <Link className={styles.navItem} href='/'>Home</Link>
                 </ul>
             </nav>
             <div className={styles.loginButtons}>
-                <button className={styles.loginButton}>Register</button>
-                <button className={styles.loginButton}>Login</button>
+                {
+                    !isLogged ?
+                        <button className={styles.loginButton} onClick={() => router.push('/login')}>
+                            Login
+                        </button>
+                        :
+                        <>
+                            <Popover
+                                isOpen={popoverContentOpen}
+                                positions={['bottom']}
+                                content={popoverContent}
+                            >
+                                <div className={styles.profile}></div>
+                            </Popover>
+                        </>
+                }
             </div>
-        </header>
+        </header >
     );
 }
 

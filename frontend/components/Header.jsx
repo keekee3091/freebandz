@@ -1,7 +1,17 @@
 import React from 'react';
-import styles from '../styles/Header.module.css'; // Import your CSS module
+import styles from '../styles/Header.module.css';
+import { useSelector, useDispatch } from 'react-redux'
+import { logoutUser } from '../reducers/user';
 
 function Header() {
+
+    const user = useSelector(state => state.user.value)
+    const isLogged = user.token != null
+
+    const logout = () => {
+        useDispatch(l)
+    }
+
     return (
         <header className={styles.header}>
             <div className={styles.logo}>
@@ -16,6 +26,10 @@ function Header() {
                     <li className={styles.navItem}><a href="/contact">Contact</a></li>
                 </ul>
             </nav>
+            <div className={styles.loginButtons}>
+                <button className={styles.loginButton}>Register</button>
+                <button className={styles.loginButton}>Login</button>
+            </div>
         </header>
     );
 }

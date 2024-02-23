@@ -1,17 +1,31 @@
 import React from 'react';
-import Link from 'next/link'
+import Link from 'next/link';
 import styles from '../styles/Home.module.css';
+import { useSelector } from 'react-redux';
+import { useRouter } from 'next/router';
 
 function Banner() {
+  const user = useSelector(state => state.user);
+  const router = useRouter();
+  const isLogged = user.token != null;
+
   return (
     <div className={styles.banner}>
       <h1 className={styles.title}>Welcome to Your Micro SaaS Finance Manager</h1>
       <p className={styles.description}>Track your finances easily with our intuitive platform.</p>
       <div className={styles.ctaButtons}>
-        <Link href='/login'>
-          <a className={`${styles.primaryButton} ${styles.signupButton}`}>Sign Up</a>
+        <Link href='/'>
+          <a className={styles.learnMoreButton}>Learn More</a>
         </Link>
-        <button className={styles.secondaryButton}>Learn More</button>
+        {!isLogged ? (
+          <button className={styles.loginButton} onClick={() => router.push('/login')}>
+            Login
+          </button>
+        ) : (
+          <Link href='/personal'>
+            <a className={styles.profileButton}>Your Profile</a>
+          </Link>
+        )}
       </div>
     </div>
   );

@@ -19,7 +19,9 @@
   justify-content: center;
 }
 
-.primaryButton {
+.learnMoreButton,
+.loginButton,
+.profileButton {
   background-color: #007bff;
   color: #fff;
   border: none;
@@ -27,17 +29,17 @@
   margin-right: 1rem;
   border-radius: 5px;
   cursor: pointer;
-}
-
-.secondaryButton {
-  background-color: transparent;
-  color: #007bff;
-  border: 1px solid #007bff;
-  padding: 1rem 2rem;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.signupButton {
   text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.learnMoreButton:hover,
+.loginButton:hover,
+.profileButton:hover {
+  background-color: #0056b3;
+}
+
+.loginButton {
+  background-color: #fff;
+  color: #007bff;
 }

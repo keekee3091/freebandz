@@ -44,22 +44,21 @@ function Header() {
                 </ul>
             </nav>
             <div className={styles.loginButtons}>
-                {
-                    !isLogged ?
-                        <button className={styles.loginButton} onClick={() => router.push('/login')}>
-                            Login
+                {!isLogged ? (
+                    <button className={styles.loginButton} onClick={() => router.push('/login')}>
+                        Login
+                    </button>
+                ) : (
+                    <Popover
+                        isOpen={popoverContentOpen}
+                        positions={['bottom']}
+                        content={popoverContent}
+                    >
+                        <button className={styles.profileButton} onClick={() => setPopoverContentOpen(!popoverContentOpen)}>
+                            <img src="/profile-icon.png" alt="Profile" />
                         </button>
-                        :
-                        <>
-                            <Popover
-                                isOpen={popoverContentOpen}
-                                positions={['bottom']}
-                                content={popoverContent}
-                            >
-                                <div className={styles.profile}></div>
-                            </Popover>
-                        </>
-                }
+                    </Popover>
+                )}
             </div>
         </header >
     );

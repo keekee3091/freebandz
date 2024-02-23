@@ -8,7 +8,9 @@ function Banner() {
       <h1 className={styles.title}>Welcome to Your Micro SaaS Finance Manager</h1>
       <p className={styles.description}>Track your finances easily with our intuitive platform.</p>
       <div className={styles.ctaButtons}>
-        <Link className={styles.primaryButton} href='/login'>Sign Up</Link>
+        <Link href='/login'>
+          <a className={`${styles.primaryButton} ${styles.signupButton}`}>Sign Up</a>
+        </Link>
         <button className={styles.secondaryButton}>Learn More</button>
       </div>
     </div>

@@ -37,3 +37,7 @@
   border-radius: 5px;
   cursor: pointer;
 }
+
+.signupButton {
+  text-decoration: none;
+}

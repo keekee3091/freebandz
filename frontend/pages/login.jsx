@@ -97,6 +97,9 @@ function login() {
                     <button className={styles.button} onClick={() => { setIsSignIn(true); openModal() }}>Login</button>
 
                 </div>
+                <div className={styles.container}>
+                    <button className={styles.button} onClick={() => router.push('/')}>Return</button>
+                </div>
                 {isSignIn ? (
                     <SignIn isOpen={modalIsOpen} closeModal={closeModal} handleSignIn={handleLogin} />
                 ) : (

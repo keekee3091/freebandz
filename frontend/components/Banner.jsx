@@ -18,7 +18,7 @@ function Banner() {
           <a className={styles.learnMoreButton}>Learn More</a>
         </Link>
         {!isLogged ? (
-          <button className={styles.loginButton} onClick={() => router.push('/login')}>
+          <button className={styles.learnMoreButton} onClick={() => router.push('/login')}>
             Login
           </button>
         ) : (

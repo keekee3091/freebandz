@@ -79,7 +79,7 @@ function login() {
         <>
             <div className={styles.loginBody}>
 
-                <div>
+                <div className={styles.loginScreen}>
 
                     <div className={styles.loginContainer}>
 

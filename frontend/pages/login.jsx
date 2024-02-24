@@ -79,34 +79,36 @@ function login() {
         <>
             <div className={styles.loginBody}>
 
-                <div className={styles.loginContainer}>
+                <div>
 
-                    <img className={styles.logo} src='placeholer' />
+                    <div className={styles.loginContainer}>
+
+                        <img className={styles.logo} src='placeholer' />
+
+                    </div>
+                    <div className={styles.container}>
+
+                        <h1 className={styles.title}><p>Join FreeBandz today, nigga !</p></h1>
+
+                        <h2 className={styles.subTitle}>Fuck is you waiting on, nigga ?</h2>
+
+                        <button className={styles.button} onClick={() => { setIsSignIn(false); openModal() }}>Register</button>
+
+                        <h2 className={styles.subTitle}>I'm butta cuuuuuum</h2>
+
+                        <button className={styles.button} onClick={() => { setIsSignIn(true); openModal() }}>Login</button>
+
+                    </div>
+                    <div className={styles.container}>
+                        <button className={styles.button} onClick={() => router.push('/')}>Return</button>
+                    </div>
+                    {isSignIn ? (
+                        <SignIn isOpen={modalIsOpen} closeModal={closeModal} handleSignIn={handleLogin} />
+                    ) : (
+                        <SignUp isOpen={modalIsOpen} closeModal={closeModal} handleSignUp={handleRegister} />
+                    )}
 
                 </div>
-                <div className={styles.container}>
-
-                    <h1 className={styles.title}><p>Join FreeBandz today, nigga !</p></h1>
-
-                    <h2 className={styles.subTitle}>Fuck is you waiting on, nigga ?</h2>
-
-                    <button className={styles.button} onClick={() => { setIsSignIn(false); openModal() }}>Register</button>
-
-                    <h2 className={styles.subTitle}>I'm butta cuuuuuum</h2>
-
-                    <button className={styles.button} onClick={() => { setIsSignIn(true); openModal() }}>Login</button>
-
-                </div>
-                <div className={styles.container}>
-                    <button className={styles.button} onClick={() => router.push('/')}>Return</button>
-                </div>
-                {isSignIn ? (
-                    <SignIn isOpen={modalIsOpen} closeModal={closeModal} handleSignIn={handleLogin} />
-                ) : (
-                    <SignUp isOpen={modalIsOpen} closeModal={closeModal} handleSignUp={handleRegister} />
-                )}
-
-
             </div>
         </>
 
